@@ -1,0 +1,43 @@
+After getting boot2Docker properly set up.
+
+vagrant up demo
+Accumulo etc. comes up fine. Jetty is not serving Lumify app.
+
+Put war in /opt/jetty/webapps.
+
+Missing configuration.
+
+Added LUMIFY_DIR env variable and put lumify.properties and log4j in there.
+
+That fixed config issue. Now complaint about not accessing hdfs do to unknownhost lumify-dev.
+
+After restart networking fixed.
+
+Static assets are not being served, getting 404.
+
+Had to build static resources with grunt after doing npm install.
+
+Need to follow steps 3 and 4 from https://github.com/lumifyio/lumify/blob/master/docker/README.md#docker-web-server.
+
+This got login but it didn't work. Missing cytoscape???
+
+Do npm config set bin-links false. This fixes symlink error in grunt deps.
+
+Needed to do npm install. Then grunt deps. Then grunt. Then mvn package...
+
+Run all mvn and npm commands from windows host.
+
+Need to install plugins for everything. 
+
+dev-tools web pulgin for additional admin features (ontology upload).
+
+Jetty restart required for plugin loading.
+
+Recomended initial plugins (wrong versions):
+lumify-gpw-mime-type-ontology-mapper-0.4.1-SNAPSHOT-jar-with-dependencies.jar	
+lumify-gpw-opennlp-dictionary-extractor-0.4.1-SNAPSHOT-jar-with-dependencies.jar	
+lumify-gpw-opennlp-me-extractor-0.4.1-SNAPSHOT-jar-with-dependencies.jar	
+lumify-gpw-tika-mime-type-0.4.1-SNAPSHOT-jar-with-dependencies.jar	
+lumify-gpw-tika-text-extractor-0.4.1-SNAPSHOT-jar-with-dependencies.jar	
+lumify-web-auth-username-only-0.4.1-SNAPSHOT.jar	
+lumify-web-dev-tools-0.4.1-SNAPSHOT.jar
